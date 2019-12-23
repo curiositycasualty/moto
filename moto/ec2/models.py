@@ -154,7 +154,13 @@ OWNER_ID = "111122223333"
 
 
 def utc_date_and_time():
-    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z")
+    now = datetime.utcnow()
+
+    stamp = '%s.%dZ' % (
+        now.strftime("%Y-%m-%dT%H:%M:%S"),
+        str(now.microsecond)[:3]
+
+    return stamp
 
 
 def validate_resource_ids(resource_ids):
